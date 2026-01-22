@@ -1,3 +1,7 @@
-项目启动：npm run dev
-登录账号：admin
-登录密码：ant.design
+- system: 操作系统 Windows 10
+- framework: 框架版本 Node 22
+- package_manager: 包管理器 npm
+- other_dependencies: package.json 已描述依赖信息
+- startup_command: 项目启动：npm run start
+- 登录账号：admin
+- 登录密码：ant.design
