@@ -1,11 +1,12 @@
 import { Input as AntInput, Button, Card, Form, Input, Select } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useIntl } from 'umi';
+import GenericForm from '@/components/FormConfig';
 import {
   getCityOptions,
   getDistrictOptions,
   profileSettingsFormConfig,
-} from '@/components/FormConfig/profileSettings';
+} from '@/pages/profile/settings/profileSettings';
 
 const { TextArea } = AntInput;
 
@@ -70,75 +71,12 @@ const ProfileSettings: React.FC = () => {
 
   return (
     <Card title={intl.formatMessage({ id: 'profile.settings.title' })}>
-      <Form
+      <GenericForm
         form={form}
-        layout="vertical"
+        fields={formFields}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        validateTrigger="onBlur"
-      >
-        {formFields.length > 0 ? (
-          formFields.map((field) => {
-            // 确保组件存在
-            if (!field.component) {
-              return null;
-            }
-
-            // 为省市区添加联动逻辑
-            if (field.name === 'province') {
-              return (
-                <Form.Item
-                  key={field.name}
-                  name={field.name}
-                  label={field.label}
-                  rules={field.rules}
-                >
-                  <field.component
-                    {...field.componentProps}
-                    onChange={handleProvinceChange}
-                  />
-                </Form.Item>
-              );
-            }
-            if (field.name === 'city') {
-              return (
-                <Form.Item
-                  key={field.name}
-                  name={field.name}
-                  label={field.label}
-                  rules={field.rules}
-                >
-                  <field.component
-                    {...field.componentProps}
-                    onChange={handleCityChange}
-                  />
-                </Form.Item>
-              );
-            }
-            return (
-              <Form.Item
-                key={field.name}
-                name={field.name}
-                label={field.label}
-                rules={field.rules}
-              >
-                <field.component {...field.componentProps} />
-              </Form.Item>
-            );
-          })
-        ) : (
-          <div>加载中...</div>
-        )}
-
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            {intl.formatMessage({ id: 'profile.settings.submit' })}
-          </Button>
-          <Button style={{ marginLeft: 8 }} onClick={() => form.resetFields()}>
-            重置
-          </Button>
-        </Form.Item>
-      </Form>
+      />
     </Card>
   );
 };

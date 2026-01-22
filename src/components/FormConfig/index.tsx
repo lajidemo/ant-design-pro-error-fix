@@ -1,6 +1,6 @@
 import { Button, Form, type FormInstance } from 'antd';
 import React from 'react';
-import type { FormFieldConfig } from './profileSettings';
+import type { FormFieldConfig } from '../../pages/profile/settings/profileSettings';
 
 interface GenericFormProps {
   form: FormInstance;
@@ -23,7 +23,6 @@ const GenericForm: React.FC<GenericFormProps> = ({
       layout="vertical"
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
-      validateTrigger="onBlur"
       initialValues={initialValues}
     >
       {fields.map((field) => (

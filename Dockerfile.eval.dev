@@ -1,0 +1,24 @@
+ARG NODE_VERSION=22
+FROM node:${NODE_VERSION}-alpine
+
+ARG CODE_URL=https://deep-evaluation-set.tos-cn-beijing.volces.com/ant-design-pro-5d00b955758c3932f844b8834f1940ec7d0b2356.zip
+
+# Alpine 使用 apk 而非 apt-get
+RUN apk add --no-cache \
+    curl \
+    wget \
+    unzip \
+    vim \
+    less \
+    htop \
+    procps
+
+RUN wget -O /tmp/code.zip ${CODE_URL} && \
+    unzip /tmp/code.zip -d /tmp && \
+    mv /tmp/ant-design-pro-* /workspace && \
+    rm /tmp/code.zip
+
+WORKDIR /workspace
+
+RUN npm i pnpm -g && pnpm install
+# 注意：不是 npm ci，开发环境用 npm install
