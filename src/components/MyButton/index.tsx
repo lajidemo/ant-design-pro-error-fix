@@ -5,9 +5,6 @@ const styles = createStaticStyles(({ css, cssVar }) => {
   console.log('cssVar.colorPrimary', cssVar.colorPrimary);
   return {
     container: css`
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
     background-color: ${cssVar.colorPrimary};
   `,
   };
