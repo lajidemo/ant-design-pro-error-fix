@@ -51,7 +51,7 @@ export const profileSettingsFormConfig = (intl: any): FormFieldConfig[] => {
           message: intl.formatMessage({
             id: 'profile.settings.nickname.required',
           }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
       ],
       required: true,
@@ -65,12 +65,12 @@ export const profileSettingsFormConfig = (intl: any): FormFieldConfig[] => {
         placeholder: intl.formatMessage({
           id: 'profile.settings.bio.placeholder',
         }),
-        validateTrigger: 'onBlur',
       },
       rules: [
         {
           required: true,
           message: intl.formatMessage({ id: 'profile.settings.bio.required' }),
+          trigger: 'onBlur',
         },
       ],
       required: true,
@@ -94,7 +94,7 @@ export const profileSettingsFormConfig = (intl: any): FormFieldConfig[] => {
           message: intl.formatMessage({
             id: 'profile.settings.province.required',
           }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
       ],
       required: true,
@@ -112,7 +112,7 @@ export const profileSettingsFormConfig = (intl: any): FormFieldConfig[] => {
         {
           required: true,
           message: intl.formatMessage({ id: 'profile.settings.city.required' }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
       ],
       required: true,
@@ -132,7 +132,7 @@ export const profileSettingsFormConfig = (intl: any): FormFieldConfig[] => {
           message: intl.formatMessage({
             id: 'profile.settings.district.required',
           }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
       ],
       required: true,
@@ -152,7 +152,7 @@ export const profileSettingsFormConfig = (intl: any): FormFieldConfig[] => {
           message: intl.formatMessage({
             id: 'profile.settings.detailAddress.required',
           }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
       ],
       required: true,
@@ -172,12 +172,12 @@ export const profileSettingsFormConfig = (intl: any): FormFieldConfig[] => {
           message: intl.formatMessage({
             id: 'profile.settings.phone.required',
           }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
         {
           pattern: /^1[3-9]\d{9}$/,
           message: intl.formatMessage({ id: 'profile.settings.phone.format' }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
       ],
       required: true,
@@ -197,12 +197,12 @@ export const profileSettingsFormConfig = (intl: any): FormFieldConfig[] => {
           message: intl.formatMessage({
             id: 'profile.settings.email.required',
           }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
         {
           type: 'email',
           message: intl.formatMessage({ id: 'profile.settings.email.format' }),
-          validateTrigger: 'onBlur',
+          trigger: 'onBlur',
         },
       ],
       required: true,
