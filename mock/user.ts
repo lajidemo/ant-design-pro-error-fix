@@ -202,4 +202,47 @@ export default {
   },
 
   'GET  /api/login/captcha': getFakeCaptcha,
+  // 获取用户个人设置数据
+  'GET /api/profile/settings': (_req: Request, res: Response) => {
+    if (!getAccess()) {
+      res.status(401).send({
+        data: {},
+        errorCode: '401',
+        errorMessage: '请先登录！',
+        success: false,
+      });
+      return;
+    }
+    res.send({
+      success: true,
+      data: {
+        nickname: '张三',
+        bio: '这是个人简介',
+        province: '广东省',
+        city: '深圳市',
+        district: '南山区',
+        detailAddress: '科技园南区',
+        phone: '13800138000',
+        email: 'zhangsan@example.com',
+      },
+    });
+  },
+  // 保存用户个人设置数据
+  'POST /api/profile/settings': (req: Request, res: Response) => {
+    if (!getAccess()) {
+      res.status(401).send({
+        data: {},
+        errorCode: '401',
+        errorMessage: '请先登录！',
+        success: false,
+      });
+      return;
+    }
+    const userData = req.body;
+    res.send({
+      success: true,
+      data: userData,
+      message: '保存成功！',
+    });
+  },
 };

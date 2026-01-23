@@ -1,9 +1,16 @@
+import { StyleProvider } from '@ant-design/cssinjs';
 import { PageContainer } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
-import { Card, ConfigProvider, theme } from 'antd';
+import { Button, Card, ConfigProvider, theme } from 'antd';
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 import MyButton from '@/components/MyButton';
 
+// const targetElement = document.getElementById('root');
+// const shadowRoot = document.body.attachShadow({ mode: 'open' });
+// const container = document.createElement('div');
+// shadowRoot.appendChild(container);
+// const root = createRoot(container);
 /**
  * 每个单独的卡片，为了复用样式抽成了组件
  * @param param0
@@ -20,10 +27,17 @@ const InfoCard: React.FC<{
   const { token } = useToken();
 
   return (
+    // <StyleProvider container={shadowRoot}>
     <ConfigProvider
       theme={{
         token: {
           colorPrimary: 'red',
+        },
+        components: {
+          Button: {
+            colorPrimary: 'skyblue',
+            colorBgContainer: 'orange',
+          },
         },
       }}
     >
@@ -40,7 +54,8 @@ const InfoCard: React.FC<{
           flex: 1,
         }}
       >
-        <MyButton type="primary">按钮</MyButton>
+        <Button type="primary">主题色按钮</Button>
+        <MyButton></MyButton>
         <div
           style={{
             display: 'flex',
@@ -90,6 +105,7 @@ const InfoCard: React.FC<{
         </a>
       </div>
     </ConfigProvider>
+    // </StyleProvider>
   );
 };
 

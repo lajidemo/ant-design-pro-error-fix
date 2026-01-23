@@ -1,19 +1,51 @@
-import { Button, type ButtonProps, ConfigProvider } from 'antd';
-import { createStaticStyles, createStyles } from 'antd-style';
+import { SmileOutlined } from '@ant-design/icons';
+import { Button, Space, theme } from 'antd';
+import { createStyles } from 'antd-style';
 
-const styles = createStaticStyles(({ css, cssVar }) => {
-  console.log('cssVar.colorPrimary', cssVar.colorPrimary);
+const useStyles = createStyles(({ token, css, cx }) => {
+  const buttonToken = token.components?.Button;
+  // console.log('buttonColorPrimary', buttonColorPrimary);
+  const commonCard = css`
+    border-radius: ${token.borderRadiusLG}px;
+    padding: ${token.paddingLG}px;
+  `;
+
   return {
     container: css`
-    background-color: ${cssVar.colorPrimary};
-  `,
+      background-color: ${buttonToken?.colorBgLayout};
+      padding: 24px;
+    `,
+
+    defaultCard: css`
+      ${commonCard};
+      background: ${buttonToken?.colorBgContainer};
+      color: ${token.colorText};
+    `,
+
+    primaryCard: cx(
+      commonCard,
+      css`
+        background: ${buttonToken?.colorPrimary};
+        color: ${token.colorTextLightSolid};
+      `,
+    ),
   };
 });
 
-const MyButton = (props: ButtonProps) => {
+const MyButton = () => {
+  const { token } = theme.useToken();
+  const { styles } = useStyles();
+
   return (
     <div className={styles.container}>
-      <Button {...props}>{props.children}</Button>
+      <Space direction={'vertical'} style={{ width: '100%' }} size={16}>
+        <Space>
+          <Button title={'功能按钮的说明'} icon={<SmileOutlined />} />
+          操作按钮
+        </Space>
+        <div className={styles.defaultCard}>普通卡片</div>
+        <div className={styles.primaryCard}>主要卡片</div>
+      </Space>
     </div>
   );
 };

@@ -98,4 +98,15 @@ declare namespace API {
     description?: string;
     type?: NoticeIconItemType;
   };
+
+  type ProfileSettings = {
+    nickname?: string;
+    bio?: string;
+    province?: string;
+    city?: string;
+    district?: string;
+    detailAddress?: string;
+    phone?: string;
+    email?: string;
+  };
 }
